@@ -25,20 +25,15 @@ package libSB.bus;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import libSB.bus.endpoint.Endpoint;
 import libSB.bus.message.Message;
 import libSB.bus.topic.Topic;
-import libSB.bus.topic.matcher.TopicMatcher;
 
 /**
  *
  * @author Simon Berndt
  */
 public interface MessageBus extends MessageBusService {
-    
-    @Override
-    <C> void registerEndpoint(TopicMatcher topic, Endpoint<? extends C> endpoint, Class<C> type);
-    
+        
     <C> void raise(Topic topic, Message<? extends C> message, Class<C> type);
     
     default <C> CompletableFuture<Void> raiseAsync(Topic topic, Message<? extends C> message, Class<C> type) {

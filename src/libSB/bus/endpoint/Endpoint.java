@@ -40,5 +40,11 @@ public interface Endpoint<C> {
             consumer.accept(message != null ? message.getContend() : null);
         };
     }
+    
+    static Endpoint<Void> createNotificationEndpoint(Runnable runnable) {
+        return (Message<? extends Void> message) -> {
+            runnable.run();
+        };
+    }
 
 }

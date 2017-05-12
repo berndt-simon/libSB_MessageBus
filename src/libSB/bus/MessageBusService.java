@@ -33,5 +33,5 @@ import libSB.bus.topic.matcher.TopicMatcher;
 public interface MessageBusService {
 
     <C> void registerEndpoint(TopicMatcher topic, Endpoint<? extends C> endpoint, Class<C> type);
-
+    
 }
